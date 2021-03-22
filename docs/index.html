@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>rmr-tabs</title>
+  <link rel="stylesheet" type="text/css" href="https://davidfmiller.github.io/man/man.css">
+  <link rel="stylesheet" type="text/css" href="build/rmr-tabs.css">
+  <style>
+    .rmr-tabs li.active a {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="man">
+    <h1>rmr-tabs</h1>
+    
+    <div class="rmr-tabs">
+  <div class="rmr-filters">
+    <ul>
+      <li data-rmr-tab="all"><a href="#all">View All</a></li>
+      <li data-rmr-tab="markets"><a href="#markets">Capital Markets</a></li>
+      <li data-rmr-tab="sales"><a href="#sales">Investment Sales</a></li>
+      <li data-rmr-tab="leasing"><a href="#leasing">Agency Leasing</a></li>
+      <li data-rmr-tab="occupier"><a href="#occupier">Occupier Services</a></li>
+    </ul>
+  </div>
+  <div class="rmr-list">
+    <ul class="eca-cols">
+    
+      
+<li data-rmr-tab="markets ">
+  <div class="eca-cols">
+    <div class="eca-col">
+      <div>
+        <h3>Markets</h3>
+        <p>Case Study 2 adsfasd adsf as dfa dsf asdf .</p>
+        <a href="/studies/2/" class="more">View Full Case Study</a>
+      </div>
+    </div>
+</div></li>
+
+    
+      
+<li data-rmr-tab="occupier">
+  <div class="eca-cols">
+    <div class="eca-col">
+      <div class="eca-pair">
+      </div>
+    </div>
+    <div class="eca-col">
+      <div>
+        <h3>Occupier</h3>
+        <p>Case Study 1 adsfasd adsf as dfa dsf asdf .</p>
+        <a href="/studies/1/" class="more">View Full Case Study</a>
+      </div>
+    </div>
+</div></li>
+
+    
+    
+  </ul></div>
+
+</div>
+    
+    
+  </div>
+
+  <script src="build/rmr-tabs.bundle.js"></script>
+  <script src="https://davidfmiller.github.io/man/man.js"></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    window.Man({pre: true});
+    RMRTabs();
+  });
+  </script>
+
+</body>
+</html>

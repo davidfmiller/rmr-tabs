@@ -1,0 +1,23 @@
+
+
+
+.rmr-tabs {
+  .rmr-list {
+    transition: opacity 0.5s;
+  }
+  &.rmr-filtering {
+    .rmr-filters a { 
+      cursor: default;
+    }
+    .rmr-list {
+      opacity: 0;
+    }
+
+    .rmr-filters .active a {
+      cursor: pointer;
+    }
+  }
+  .rmr-master {
+    display: none !important;
+  }
+}
