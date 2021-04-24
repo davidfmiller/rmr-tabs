@@ -57,9 +57,11 @@
           parent.classList.remove('rmr-filtering');
         }, 500);
 
+        const tab = li.getAttribute('data-rmr-tab');
+        window.location.assign('#' + tab);
       },
       clicker = (e) => {
-//        e.preventDefault();
+        e.preventDefault();
         const
           li = RMR.Node.ancestor(e.target, 'li', true);
         show(li);
