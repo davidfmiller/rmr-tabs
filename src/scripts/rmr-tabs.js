@@ -8,8 +8,6 @@
   RMR = require('rmr-util'),
   tabs = function(options) {
 
-    console.log('tabs', options);
-
     const
       sets = RMR.Node.getAll('.rmr-tabs'),
       show = (li) => {
@@ -103,7 +101,7 @@
       hash = document.location.hash ? document.location.hash.substr(1) : null,
       lis = RMR.Node.getAll('.rmr-filters > * > li');
 
-    if (! hash) {
+    if (! hash && options && options.type === 'div') {
       show(lis[0]);
     }
     lis.map((li) => {
