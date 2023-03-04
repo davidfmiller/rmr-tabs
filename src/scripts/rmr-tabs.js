@@ -8,15 +8,39 @@
   RMR = require('rmr-util'),
   tabs = function(options) {
 
+    console.log('tabs', options);
+
     const
       sets = RMR.Node.getAll('.rmr-tabs'),
       show = (li) => {
+
+        if (options.type && options.type == 'div') {
+          const
+            root = RMR.Node.ancestor(li, '.rmr-tabs'),
+            content = root.querySelectorAll(':scope > .rmr-list > div'),
+            lis = root.querySelectorAll('.rmr-filters li');
+
+          content.forEach(div => {
+            if (div.getAttribute('data-rmr-tab') === li.getAttribute('data-rmr-tab')) {
+              div.classList.remove('rmr-filtered');
+            } else {
+              div.classList.add('rmr-filtered');
+            }
+          });
+
+          lis.forEach(li => {
+            li.classList.remove('rmr-active');
+          });
+          li.classList.add('rmr-active');
+          return;
+        }
+
         const
           link = RMR.Node.get('a', li),
           parent = RMR.Node.ancestor(li, '.rmr-tabs'),
           key = li.getAttribute('data-rmr-tab'),
           links = RMR.Node.getAll('.rmr-filters a', parent),
-          list = parent.querySelector('.rmr-list ul') || parent.querySelector('.rmr-list ol');
+          list = parent.querySelector('.rmr-list > ul') || parent.querySelector('.rmr-list > ol') || parent.querySelector('.rmr-list > div');
 
         if (! RMR.Node.get(':scope .rmr-master', parent)) {
           const
@@ -31,16 +55,16 @@
         }
 
         // if already active then no more action is necessary
-        if (li.classList.contains('active')) {
+        if (li.classList.contains('rmr-active')) {
           return;
         }
 
         // add active to proper filter
         links.map((n) => {
           const li = RMR.Node.ancestor(n, 'li', false);
-          li.classList.remove('active');
+          li.classList.remove('rmr-active');
         });
-        li.classList.add('active');
+        li.classList.add('rmr-active');
 
         parent.classList.add('rmr-filtering');
         window.setTimeout(() => {
@@ -57,9 +81,11 @@
           parent.classList.remove('rmr-filtering');
         }, 500);
 
+        const tab = li.getAttribute('data-rmr-tab');
+        window.location.assign('#' + tab);
       },
       clicker = (e) => {
-//        e.preventDefault();
+        e.preventDefault();
         const
           li = RMR.Node.ancestor(e.target, 'li', true);
         show(li);
@@ -78,7 +104,7 @@
       lis = RMR.Node.getAll('.rmr-filters > * > li');
 
     if (! hash) {
-      return
+      show(lis[0]);
     }
     lis.map((li) => {
       if (li.getAttribute('data-rmr-tab') === hash) {
