@@ -101,7 +101,7 @@
       hash = document.location.hash ? document.location.hash.substr(1) : null,
       lis = RMR.Node.getAll('.rmr-filters > * > li');
 
-    if (! hash && options && options.type === 'div') {
+    if (options && options.type === 'div') {
       show(lis[0]);
     }
     lis.map((li) => {
