@@ -1,6 +1,6 @@
 {
   "name": "rmr-tabs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "tabs",
   "main": "webpack.config.js",
   "scripts": {
